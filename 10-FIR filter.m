@@ -7,7 +7,7 @@ window_type = @hamming;
 window_length = filter_order + 1;
 
 % Design filter coefficients
-filter_coeffs = fir1(filter_order, cutoff_freq, window_type);
+filter_coeffs = fir1(filter_order, 2*cutoff_freq, window_type);
 
 % Generate input signal
 Fs = 1000; % Sampling frequency
