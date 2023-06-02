@@ -28,6 +28,4 @@ xlabel('n');
 ylabel('y(n)');
 title('Linear Convolution');
 
-% Adjust the spacing between subplots
-sgtitle('Linear Convolution of Two Signals');
 
