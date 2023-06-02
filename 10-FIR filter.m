@@ -7,7 +7,7 @@ windowType = 'hamming';         % Type of window function
 filterCoeffs = fir1(order, cutoffFreq, windowType);
 
 % Plot the magnitude response of the FIR filter
-freqResponse = fft(filterCoeffs, 1024);
+freqResponse = freqz(filterCoeffs, 1, 1024);
 freqAxis = linspace(0, 1, numel(freqResponse));
 magnitudeResponse = 20*log10(abs(freqResponse));
 
