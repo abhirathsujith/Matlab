@@ -1,12 +1,29 @@
-% Define the input signal
-x = [1 2 3 4 5];
+% Filter specifications
+order = 50;                     % Filter order
+cutoffFreq = 0.4;               % Normalized cutoff frequency
+windowType = 'hamming';         % Type of window function
 
-% Define the filter coefficients
-h = [0.1 0.2 0.3 0.4 0.5];
+% Design the FIR filter using windowing technique
+filterCoeffs = fir1(order, cutoffFreq, windowType);
 
-% Apply FIR filter
-y = conv(x, h, 'same');
+% Plot the magnitude response of the FIR filter
+freqResponse = fft(filterCoeffs, 1024);
+freqAxis = linspace(0, 1, numel(freqResponse));
+magnitudeResponse = 20*log10(abs(freqResponse));
 
-% Display the filtered signal
-disp("Filtered Signal:");
-disp(y);
+figure;
+plot(freqAxis, magnitudeResponse);
+xlabel('Normalized Frequency');
+ylabel('Magnitude (dB)');
+title('Magnitude Response of FIR Filter');
+grid on;
+
+% Plot the impulse response of the FIR filter
+impulseResponse = filterCoeffs;
+
+figure;
+stem(0:length(impulseResponse)-1, impulseResponse, 'filled');
+xlabel('n');
+ylabel('h(n)');
+title('Impulse Response of FIR Filter');
+grid on;
