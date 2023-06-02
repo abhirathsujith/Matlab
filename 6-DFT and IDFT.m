@@ -1,15 +1,14 @@
 % Define the input signal
-x = [1 2 3 4];
+x = [1, 2, 3, 4];
 
-% Compute DFT
+% Compute the DFT
 X = fft(x);
 
-% Compute IDFT
-x_reconstructed = ifft(X);
+% Compute the IDFT
+reconstructed_x = ifft(X);
 
 % Display the results
-disp("DFT of x:");
+disp('DFT:');
 disp(X);
-
-disp("Reconstructed x using IDFT:");
-disp(x_reconstructed);
+disp('IDFT:');
+disp(reconstructed_x);
