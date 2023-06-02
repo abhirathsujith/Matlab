@@ -2,8 +2,9 @@
 cutoff_freq = 0.2; % Normalized cutoff frequency (0 to 1)
 filter_order = 50; % Filter order
 
-% Determine window type
+% Determine window type and length
 window_type = @hamming;
+window_length = filter_order + 1;
 
 % Design filter coefficients
 filter_coeffs = fir1(filter_order, cutoff_freq, window_type);
