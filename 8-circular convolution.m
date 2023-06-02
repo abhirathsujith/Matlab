@@ -1,18 +1,31 @@
 % Define the input sequences
-L = 3; % Number of sequences
-N = 5; % Length of each sequence
+x = [1, 2, 3, 4];   % Sequence 1
+h = [1, -1, 1];     % Sequence 2
 
-x = [1 2 3 4 5]; % First sequence
-h = [2 4 6 8 10]; % Second sequence
-g = [3 6 9 12 15]; % Third sequence
+% Compute the circular convolution
+y = cconv(x, h, length(x));
 
-% Perform circular convolution
-y = zeros(1, N); % Initialize the output sequence
+% Generate the x-axis for the output sequence
+n = 0:(length(x)-1);
 
-for i = 1:L
-    y = y + cconv(x, circshift(h, i-1, 2), N);
-end
+% Plot the input sequences
+subplot(3, 1, 1);
+stem(n, x, 'filled');
+xlabel('n');
+ylabel('x(n)');
+title('Sequence 1');
 
-% Display the result
-disp("Circular Convolution of L Sequences:");
-disp(y);
+subplot(3, 1, 2);
+stem(n, h, 'filled');
+xlabel('n');
+ylabel('h(n)');
+title('Sequence 2');
+
+% Plot the output sequence (circular convolution)
+subplot(3, 1, 3);
+stem(n, y, 'filled');
+xlabel('n');
+ylabel('y(n)');
+title('Circular Convolution');
+
+
